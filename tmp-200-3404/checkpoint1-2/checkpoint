@@ -1,0 +1,2 @@
+model_checkpoint_path: "run_embedding_lprel.ckpt"
+all_model_checkpoint_paths: "run_embedding_lprel.ckpt"
