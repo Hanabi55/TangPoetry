@@ -31,19 +31,19 @@ def create3_4(num_epochs, inputPeom):
     x_test = np.reshape(x_test, (len(x_test), 32))
 
     model = tf.keras.Sequential([
-        Embedding(4396, 200),
+        Embedding(4294, 200),
         GRU(600, return_sequences=True),
         Dropout(0.5),
         GRU(750),
         Dropout(0.5),
-        Dense(4396, activation='softmax')
+        Dense(4294, activation='softmax')
     ])
 
     model.compile(optimizer=tf.keras.optimizers.SGD(0.001),
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                   metrics=['sparse_categorical_accuracy'])
 
-    checkpoint_save_path = "./checkpoint1-2/run_embedding_lprel.ckpt"
+    checkpoint_save_path = "./checkpoint3~4/model2_create_3~4.ckpt"
 
     if os.path.exists(checkpoint_save_path + '.index'):
         print('------------load the model2--------------')

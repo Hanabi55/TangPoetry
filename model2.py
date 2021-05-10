@@ -30,22 +30,22 @@ y_test = np.array(y_test)
 x_test = np.reshape(x_test, (len(x_test), 32))
 
 model = tf.keras.Sequential([
-    Embedding(4396, 200),
+    Embedding(4294, 200),
     GRU(600, return_sequences=True),
-    Dropout(0.5),
+    Dropout(0.8),
     GRU(750),
-    Dropout(0.5),
-    Dense(4396, activation='softmax')
+    Dropout(0.8),
+    Dense(4294, activation='softmax')
 ])
 
 model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
               metrics=['sparse_categorical_accuracy'])
 
-checkpoint_save_path = "./checkpoint1-2/run_embedding_lprel.ckpt"
+checkpoint_save_path = "./checkpoint3~4/model2_create_3~4.ckpt"
 
 if os.path.exists(checkpoint_save_path + '.index'):
-    print('------------load the model--------------')
+    print('------------load the model2--------------')
     model.load_weights(checkpoint_save_path)
 
 cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_save_path,
@@ -53,7 +53,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_save_path,
                                                  save_best_only=True,
                                                  monitor='loss')
 
-history = model.fit(x_train, y_train, batch_size=64, epochs=20, validation_data=(x_test, y_test), validation_freq=1,
+history = model.fit(x_train, y_train, batch_size=32, epochs=20, validation_data=(x_test, y_test), validation_freq=1,
                     callbacks=[cp_callback])
 
 model.summary()
@@ -80,7 +80,7 @@ plt.title('Training Loss')
 plt.legend()
 plt.show()
 
-"""
+
 peom_test = input("输入例诗：")
 inputPeom = []
 printPeom = []
@@ -99,4 +99,3 @@ for i in range(16):
     inputPeom.append(predicted_next_w)
     printPeom.append(predicted_next_w)
     print(id_to_w[predicted_next_w], end='')
-"""
