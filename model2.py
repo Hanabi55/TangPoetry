@@ -11,7 +11,8 @@ from tensorflow.keras.layers import Dense, GRU, Embedding, Dropout
 import matplotlib.pyplot as plt
 import os
 import random
-from trainData2 import x_train, y_train, x_test, y_test, w_to_id, id_to_w
+from trainData2 import x_train, y_train, x_test, y_test
+from createDict import w_to_id,id_to_w
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 

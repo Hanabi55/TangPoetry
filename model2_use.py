@@ -13,7 +13,7 @@ import random
 
 
 def create3_4(num_epochs, inputPeom):
-    from trainData2 import x_train, y_train, x_test, y_test, w_to_id, id_to_w
+    from trainData2 import x_train, y_train, x_test, y_test
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     randomSeed = random.randint(1, 100)

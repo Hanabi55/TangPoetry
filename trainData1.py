@@ -5,39 +5,12 @@
 @Author :Hanabi55
 @File   :trainData2-1.py
 """
-import random
-from random import shuffle
 
-f = open("poetry7.txt", "r", encoding="utf-8")
-peomPackage = []
-w_package = []
-w_to_id = {' ': 0}
-id_to_w = {0: ' '}
-
-for j in range(7086):
-    line = f.readline()
-    peomPackage.append(line)
-f.close()
-
-for i in peomPackage:
-    for j in i:
-        if j not in w_package:
-            w_package.append(j)
-
-random.seed(10)
-shuffle(w_package)
-
-# print(len(w_package))
-
-for i in range(len(w_package)):
-    w_to_id[w_package[i]] = i
-    id_to_w[i] = w_package[i]
-
+from createDict import id_to_w,w_to_id,peomPackage
 x_train = []
 y_train = []
 x_test = []
 y_test = []
-
 for i in range(7086):
     list_tmp = []
     list_tmp1 = []
@@ -60,3 +33,6 @@ for i in range(7086):
             y_train.append(list_tmp[15 + j])
 
 # print(len(y_test),len(y_train))
+# for i in range(10):
+#    print("x_train:",x_train[i][0:16])
+#    print("y_train:",y_train[i])
