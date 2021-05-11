@@ -6,7 +6,8 @@
 @File   :trainData2-1.py
 """
 
-from createDict import id_to_w,w_to_id,peomPackage
+from createDict import id_to_w, w_to_id, peomPackage
+
 x_train = []
 y_train = []
 x_test = []

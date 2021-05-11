@@ -5,8 +5,7 @@
 @Author :Hanabi55
 @File   :trainData.py
 """
-from createDict import w_to_id,id_to_w,peomPackage
-
+from createDict import w_to_id, id_to_w, peomPackage
 
 x_train = []
 y_train = []

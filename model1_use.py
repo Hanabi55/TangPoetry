@@ -54,8 +54,8 @@ def create1_2(num_epochs, inputPeom):
                                                      monitor='loss')
 
     model.fit(x_train, y_train, batch_size=32, epochs=num_epochs, validation_data=(x_test, y_test),
-                        validation_freq=1,
-                        callbacks=[cp_callback])
+              validation_freq=1,
+              callbacks=[cp_callback])
 
     model.summary()
 

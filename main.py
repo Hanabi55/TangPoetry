@@ -5,7 +5,7 @@
 @Author :Hanabi55
 @File   :main.py
 """
-from trainData1 import id_to_w, w_to_id
+from createDict import id_to_w, w_to_id
 from model1_use import create1_2
 from model2_use import create3_4
 import warnings

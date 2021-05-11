@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import os
 import random
 from trainData1 import x_train, y_train, x_test, y_test
-from createDict import w_to_id,id_to_w
+from createDict import w_to_id, id_to_w
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -81,7 +81,6 @@ plt.plot(acc, label='Training Loss')
 plt.title('Training Loss')
 plt.legend()
 plt.show()
-
 
 peom_test = input("输入例诗：")
 inputPeom = []
