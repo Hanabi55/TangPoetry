@@ -33,9 +33,9 @@ x_test = np.reshape(x_test, (len(x_test), 32))
 model = tf.keras.Sequential([
     Embedding(4294, 200),
     GRU(600, return_sequences=True),
-    Dropout(0.8),
+    Dropout(0.5),
     GRU(750),
-    Dropout(0.8),
+    Dropout(0.5),
     Dense(4294, activation='softmax')
 ])
 
@@ -67,17 +67,11 @@ for v in model.trainable_variables:
 f_write.close()
 
 # 可视化
-acc = history.history['sparse_categorical_accuracy']
 loss = history.history['loss']
-
-plt.subplot(1, 2, 1)
-plt.plot(acc, label='Training Accuracy')
-plt.title('Training Accuracy')
-plt.legend()
-
-plt.subplot(1, 2, 1)
-plt.plot(acc, label='Training Loss')
-plt.title('Training Loss')
+val_loss = history.history['val_loss']
+plt.plot(loss, label='Training Loss')
+plt.plot(val_loss, label='Validation Loss')
+plt.title('Training and Validation loss')
 plt.legend()
 plt.show()
 

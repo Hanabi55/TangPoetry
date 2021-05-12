@@ -54,7 +54,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_save_path,
                                                  save_best_only=True,
                                                  monitor='loss')
 
-history = model.fit(x_train, y_train, batch_size=32, epochs=10, validation_data=(x_test, y_test), validation_freq=1,
+history = model.fit(x_train, y_train, batch_size=32, epochs=20, validation_data=(x_test, y_test), validation_freq=1,
                     callbacks=[cp_callback])
 
 model.summary()
@@ -67,20 +67,14 @@ for v in model.trainable_variables:
 f_write.close()
 
 # 可视化
-
-acc = history.history['sparse_categorical_accuracy']
 loss = history.history['loss']
-
-plt.subplot(1, 2, 1)
-plt.plot(acc, label='Training Accuracy')
-plt.title('Training Accuracy')
-plt.legend()
-
-plt.subplot(1, 2, 1)
-plt.plot(acc, label='Training Loss')
-plt.title('Training Loss')
+val_loss = history.history['val_loss']
+plt.plot(loss, label='Training Loss')
+plt.plot(val_loss, label='Validation Loss')
+plt.title('Training and Validation loss')
 plt.legend()
 plt.show()
+
 
 peom_test = input("输入例诗：")
 inputPeom = []

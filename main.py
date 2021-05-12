@@ -8,9 +8,7 @@
 from createDict import id_to_w, w_to_id
 from model1_use import create1_2
 from model2_use import create3_4
-import warnings
 
-warnings.filterwarnings('ignore')
 inputPeom = []
 result = []
 inputPeom_w = input("输入两句例诗：")
@@ -24,11 +22,6 @@ if tmp == 1:
     peom2 = create3_4(num_epochs, inputPeom)
     inputPeom = [] + peom2
     peom1 = create1_2(num_epochs, inputPeom)
-    """
-    peom2 = []
-    inputPeom = [] + peom1
-    peom2 = create3_4(num_epochs, inputPeom)
-    """
 elif tmp == 2:
     peom1 = create1_2(num_epochs, inputPeom)
     inputPeom = [] + peom1
