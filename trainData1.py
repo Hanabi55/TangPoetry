@@ -18,7 +18,7 @@ for i in range(7086):
     for t in peomPackage[i]:
         list_tmp1.append(w_to_id[t])
     list_tmp = list_tmp1[16:32] + list_tmp1[0:16]
-    if i < 2125:
+    if i < 1000:
         for j in range(1, 17):
             list_tmp_tmp = list_tmp[0:j + 15]
             while len(list_tmp_tmp) != 32:

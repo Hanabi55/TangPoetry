@@ -39,7 +39,7 @@ model = tf.keras.Sequential([
     Dense(4294, activation='softmax')
 ])
 
-model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
+model.compile(optimizer=tf.keras.optimizers.SGD(0.001),
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
               metrics=['sparse_categorical_accuracy'])
 
@@ -54,7 +54,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_save_path,
                                                  save_best_only=True,
                                                  monitor='loss')
 
-history = model.fit(x_train, y_train, batch_size=32, epochs=20, validation_data=(x_test, y_test), validation_freq=1,
+history = model.fit(x_train, y_train, batch_size=32, epochs=50, validation_data=(x_test, y_test), validation_freq=1,
                     callbacks=[cp_callback])
 
 model.summary()

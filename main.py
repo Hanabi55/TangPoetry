@@ -5,28 +5,28 @@
 @Author :Hanabi55
 @File   :main.py
 """
-from createDict import id_to_w, w_to_id
+from createDict import id_to_w, w_to_id,peomPackage
 from model1_use import create1_2
 from model2_use import create3_4
+from createPeom import createPeom,wordToid
+import random
 
-inputPeom = []
-result = []
-inputPeom_w = input("输入两句例诗：")
-for i in inputPeom_w:
-    inputPeom.append(w_to_id[i])
-print("这两句诗是原诗前两句还是后两句:")
-tmp = int(input("1:前两句\n2:后两句\n请选择:"))
-print("是否要进行训练，需要则输入训练次数，不需要输入0：")
-num_epochs = int(input())
-if tmp == 1:
-    peom2 = create3_4(num_epochs, inputPeom)
-    inputPeom = [] + peom2
-    peom1 = create1_2(num_epochs, inputPeom)
-elif tmp == 2:
-    peom1 = create1_2(num_epochs, inputPeom)
-    inputPeom = [] + peom1
-    peom2 = create3_4(num_epochs, inputPeom)
-result = peom1 + peom2
-print("生成唐诗：")
-for i in result:
-    print(id_to_w[i], end='')
+
+random.seed(random.randint(1, 100))
+
+while True:
+    user = int(input("请选择功能：\n输入'0'结束功能\n输入'1'进行训练\n输入'2'开始生成唐诗\n请输入你的选择:"))
+    if user == 0:
+        break
+    elif user == 1:
+        trainNum = int(input("请输入训练次数:"))
+        str1="朝辞白帝彩云间，千里江陵一日还。"
+        str2="两岸猿声啼不住，轻舟已过万重山。"
+        create1_2(num_epochs=trainNum,inputPeom=wordToid(list(str2)))
+        create3_4(num_epochs=trainNum,inputPeom=wordToid(list(str1)))
+        print("训练结束")
+    elif user == 2:
+        createNum = int(input("请输入生成诗的数量:"))
+        for i in range(createNum):
+            createPeom()
+        print("编写结束")

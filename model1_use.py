@@ -38,7 +38,7 @@ def create1_2(num_epochs, inputPeom):
         Dense(4294, activation='softmax')
     ])
 
-    model.compile(optimizer=tf.keras.optimizers.SGD(0.001),
+    model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                   metrics=['sparse_categorical_accuracy'])
 
